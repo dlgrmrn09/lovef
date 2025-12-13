@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LOVEIT 💜</title>
+    <title>Эрхэм монитадаа 💜</title>
     <style>
       .falling-hearts {
         position: fixed;
@@ -13,7 +13,7 @@
         height: 100%;
         pointer-events: none;
         overflow: hidden;
-        z-index: -1;
+        z-index: 0;
       }
 
       .heart-fall {
@@ -148,8 +148,448 @@
         opacity: 0.95;
       }
 
+      .content__item {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .button {
+        pointer-events: auto;
+        cursor: pointer;
+        background: #e7e7e7;
+        border: none;
+        padding: 1.5rem 3rem;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        position: relative;
+        display: inline-block;
+      }
+
+      .button::before,
+      .button::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .marquee {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .marquee__inner {
+        width: fit-content;
+        display: flex;
+        position: relative;
+        --offset: 1rem;
+        --move-initial: calc(-25% + var(--offset));
+        --move-final: calc(-50% + var(--offset));
+        transform: translate3d(var(--move-initial), 0, 0);
+        animation: marquee 1s linear infinite;
+        animation-play-state: paused;
+        opacity: 0;
+      }
+
+      .button--atlas:hover .marquee__inner {
+        animation-play-state: running;
+        opacity: 1;
+        transition-duration: 0.4s;
+      }
+
+      .marquee span {
+        text-align: center;
+        white-space: nowrap;
+        font-style: italic;
+        padding: 1.5rem 0.5rem;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translate3d(var(--move-initial), 0, 0);
+        }
+
+        100% {
+          transform: translate3d(var(--move-final), 0, 0);
+        }
+      }
+
+      .button--kari {
+        font-family: freight-display-pro, serif;
+        font-weight: 900;
+        font-size: 1.25rem;
+        border-radius: 50%;
+        border: 2px solid #000;
+      }
+
+      .button--kari > span {
+        display: inline-block;
+        transition: opacity 0.1s;
+      }
+
+      .button--kari:hover > span {
+        opacity: 0;
+      }
+
+      .button--kari .marquee {
+        transform: rotate(-2.75deg);
+      }
+
+      .button--kari:hover .marquee__inner {
+        animation-play-state: running;
+        opacity: 1;
+        transition-duration: 0.6s;
+      }
+
       .none {
         background: transparent;
+      }
+
+      .cssload-main {
+        position: absolute;
+        content: "";
+        left: 50%;
+        transform: translate(-100%, -240%);
+        -o-transform: translate(-100%, -240%);
+        -ms-transform: translate(-100%, -240%);
+        -webkit-transform: translate(-100%, -240%);
+        -moz-transform: translate(-100%, -240%);
+      }
+
+      .cssload-main * {
+        font-size: 62px;
+      }
+
+      .cssload-heart {
+        animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+          normal;
+        -o-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+          normal;
+        -ms-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -webkit-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -moz-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        top: 50%;
+        content: "";
+        left: 50%;
+        position: absolute;
+      }
+
+      .cssload-heartL {
+        width: 1em;
+        height: 1em;
+        border: 1px solid rgb(252, 0, 101);
+        background-color: rgb(252, 0, 101);
+        content: "";
+        position: absolute;
+        display: block;
+        border-radius: 100%;
+        animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+          normal;
+        -o-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -ms-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -webkit-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -moz-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        transform: translate(-28px, -27px);
+        -o-transform: translate(-28px, -27px);
+        -ms-transform: translate(-28px, -27px);
+        -webkit-transform: translate(-28px, -27px);
+        -moz-transform: translate(-28px, -27px);
+      }
+
+      .cssload-heartR {
+        width: 1em;
+        height: 1em;
+        border: 1px solid rgb(252, 0, 101);
+        background-color: rgb(252, 0, 101);
+        content: "";
+        position: absolute;
+        display: block;
+        border-radius: 100%;
+        transform: translate(28px, -27px);
+        -o-transform: translate(28px, -27px);
+        -ms-transform: translate(28px, -27px);
+        -webkit-transform: translate(28px, -27px);
+        -moz-transform: translate(28px, -27px);
+        animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+          normal;
+        -o-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -ms-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -webkit-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -moz-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+      }
+
+      .cssload-square {
+        width: 1em;
+        height: 1em;
+        border: 1px solid rgb(252, 0, 101);
+        background-color: rgb(252, 0, 101);
+        position: relative;
+        display: block;
+        content: "";
+        transform: scale(1) rotate(-45deg);
+        -o-transform: scale(1) rotate(-45deg);
+        -ms-transform: scale(1) rotate(-45deg);
+        -webkit-transform: scale(1) rotate(-45deg);
+        -moz-transform: scale(1) rotate(-45deg);
+        animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+          normal;
+        -o-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -ms-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -webkit-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -moz-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+      }
+
+      .cssload-shadow {
+        top: 97px;
+        left: 50%;
+        content: "";
+        position: relative;
+        display: block;
+        bottom: -0.5em;
+        width: 1em;
+        height: 0.24em;
+        background-color: rgb(215, 215, 215);
+        border: 1px solid rgb(215, 215, 215);
+        border-radius: 50%;
+        animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+          normal;
+        -o-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -ms-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -webkit-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+        -moz-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1)
+          infinite normal;
+      }
+
+      @keyframes cssload-square {
+        50% {
+          border-radius: 100%;
+          transform: scale(0.5) rotate(-45deg);
+        }
+
+        100% {
+          transform: scale(1) rotate(-45deg);
+        }
+      }
+
+      @-o-keyframes cssload-square {
+        50% {
+          border-radius: 100%;
+          -o-transform: scale(0.5) rotate(-45deg);
+        }
+
+        100% {
+          -o-transform: scale(1) rotate(-45deg);
+        }
+      }
+
+      @-ms-keyframes cssload-square {
+        50% {
+          border-radius: 100%;
+          -ms-transform: scale(0.5) rotate(-45deg);
+        }
+
+        100% {
+          -ms-transform: scale(1) rotate(-45deg);
+        }
+      }
+
+      @-webkit-keyframes cssload-square {
+        50% {
+          border-radius: 100%;
+          -webkit-transform: scale(0.5) rotate(-45deg);
+        }
+
+        100% {
+          -webkit-transform: scale(1) rotate(-45deg);
+        }
+      }
+
+      @-moz-keyframes cssload-square {
+        50% {
+          border-radius: 100%;
+          -moz-transform: scale(0.5) rotate(-45deg);
+        }
+
+        100% {
+          -moz-transform: scale(1) rotate(-45deg);
+        }
+      }
+
+      @keyframes cssload-heart {
+        50% {
+          transform: rotate(360deg);
+        }
+
+        100% {
+          transform: rotate(720deg);
+        }
+      }
+
+      @-o-keyframes cssload-heart {
+        50% {
+          -o-transform: rotate(360deg);
+        }
+
+        100% {
+          -o-transform: rotate(720deg);
+        }
+      }
+
+      @-ms-keyframes cssload-heart {
+        50% {
+          -ms-transform: rotate(360deg);
+        }
+
+        100% {
+          -ms-transform: rotate(720deg);
+        }
+      }
+
+      @-webkit-keyframes cssload-heart {
+        50% {
+          -webkit-transform: rotate(360deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(720deg);
+        }
+      }
+
+      @-moz-keyframes cssload-heart {
+        50% {
+          -moz-transform: rotate(360deg);
+        }
+
+        100% {
+          -moz-transform: rotate(720deg);
+        }
+      }
+
+      @keyframes cssload-heartL {
+        60% {
+          transform: scale(0.4);
+        }
+      }
+
+      @-o-keyframes cssload-heartL {
+        60% {
+          -o-transform: scale(0.4);
+        }
+      }
+
+      @-ms-keyframes cssload-heartL {
+        60% {
+          -ms-transform: scale(0.4);
+        }
+      }
+
+      @-webkit-keyframes cssload-heartL {
+        60% {
+          -webkit-transform: scale(0.4);
+        }
+      }
+
+      @-moz-keyframes cssload-heartL {
+        60% {
+          -moz-transform: scale(0.4);
+        }
+      }
+
+      @keyframes cssload-heartR {
+        40% {
+          transform: scale(0.4);
+        }
+      }
+
+      @-o-keyframes cssload-heartR {
+        40% {
+          -o-transform: scale(0.4);
+        }
+      }
+
+      @-ms-keyframes cssload-heartR {
+        40% {
+          -ms-transform: scale(0.4);
+        }
+      }
+
+      @-webkit-keyframes cssload-heartR {
+        40% {
+          -webkit-transform: scale(0.4);
+        }
+      }
+
+      @-moz-keyframes cssload-heartR {
+        40% {
+          -moz-transform: scale(0.4);
+        }
+      }
+
+      @keyframes cssload-shadow {
+        50% {
+          transform: scale(0.5);
+          border-color: rgb(228, 228, 228);
+        }
+      }
+
+      @-o-keyframes cssload-shadow {
+        50% {
+          -o-transform: scale(0.5);
+          border-color: rgb(228, 228, 228);
+        }
+      }
+
+      @-ms-keyframes cssload-shadow {
+        50% {
+          -ms-transform: scale(0.5);
+          border-color: rgb(228, 228, 228);
+        }
+      }
+
+      @-webkit-keyframes cssload-shadow {
+        50% {
+          -webkit-transform: scale(0.5);
+          border-color: rgb(228, 228, 228);
+        }
+      }
+
+      @-moz-keyframes cssload-shadow {
+        50% {
+          -moz-transform: scale(0.5);
+          border-color: rgb(228, 228, 228);
+        }
       }
 
       .gallery-section {
@@ -266,8 +706,31 @@
           Өнөөдөр бол чиний гэрэлтэх өдөр. Чиний инээмсэглэл шиг бүх өдөр чинь
           гэрэл гэгээтэй, аз жаргалтай байх болтугай.
         </p>
+
+        <li class="content__item">
+          <button class="button button--kari">
+            <span>Эрхэм монитадаа</span>
+            <div aria-hidden="true" class="marquee">
+              <div class="marquee__inner">
+                <span>хайртай шүү💜</span>
+                <span>хайртай шүү💜</span>
+                <span>хайртай шүү💜</span>
+                <span>хайртай шүү💜</span>
+              </div>
+            </div>
+          </button>
+        </li>
       </div>
     </section>
+
+    <div class="cssload-main">
+      <div class="cssload-heart">
+        <span class="cssload-heartL"></span>
+        <span class="cssload-heartR"></span>
+        <span class="cssload-square"></span>
+      </div>
+      <div class="cssload-shadow"></div>
+    </div>
 
     <section id="gallery-section" class="gallery-section">
       <h2>💖 Гэрэл Зургийн Цомог 💖</h2>
@@ -316,16 +779,16 @@
         ></div>
         <div
           class="grid-item"
-          style="background-image: url('images/1.jpg')"
+          style="background-image: url('/images/1.jpg')"
         ></div>
         <div
           class="grid-item"
-          style="background-image: url('images/1.jpg')"
+          style="background-image: url('/images/1.jpg')"
         ></div>
 
         <div
           class="grid-item"
-          style="background-image: url('images/1.jpg')"
+          style="background-image: url('/images/1.jpg')"
         ></div>
         <div
           class="grid-item"
@@ -342,15 +805,15 @@
         ></div>
         <div
           class="grid-item"
-          style="background-image: url('images/1.jpg')"
+          style="background-image: url('/images/1.jpg')"
         ></div>
         <div
           class="grid-item"
-          style="background-image: url('images/1.jpg')"
+          style="background-image: url('/images/1.jpg')"
         ></div>
         <div
           class="grid-item"
-          style="background-image: url('images/1.jpg')"
+          style="background-image: url('/images/1.jpg')"
         ></div>
         <div
           class="grid-item"
@@ -402,34 +865,31 @@
 
       <div class="message-box">
         <p>
-          Бүгээн хорвоог чимсэн бүсгүй хээнцэр цэцэг <br />
-          Бүлээн сүүгээр эгшиглсэн бурхан эгэл заяа <br />
-          Эр тавиланг уяраасан өр зөөлөн үзэсгэлэн <br />
-          Эрхэмсэг бүсгүй та ертөнцийн нэгэн гайхамшиг <br />
-          <br />
-          Бүсгүй биеэс унасан болохоор <br />Бүсгүй биетэй учирсан болохоор
-          <br />Бүсгүй үр тарисан болохоор <br />Бүсгүй тэнгэрт сүсэлдэг эр хүн
-          би <br />
-          <br />
-          Дайны дунд ч гал шиг ассан зоригт хатадын улбаатай <br />Дууны сайханд
-          ч мөнхөд эгшиглэх уянга яруу ухаантай <br />Дуулим хорвоог бүхэлд нь
-          уяраах хөг аялгуу бүүвэйтэй <br />Дэлхий ертөнцийг гийгүүлсэн уран
-          яруухан үзэсгэлэнгоо <br />
-          <br />
-          Эгэл эгэлхэн хорвоог хайраар чимдэг гайхамшиг <br />Эргэх цагийн
-          хүрдэнд удам хэлхсэн танхил гэргий <br />Энхэр энхэрхэн аалиараа
-          амьдрал хуурайлсан ижий <br />Эцэс төгсгөлгүй хөврөх он жилийг бүтээгч
-          бурхан юм <br />
-          <br />
-          Танхил уяхан биеийн чинь уранд автаж <br />Тормойх алаг нүдний чинь
-          тунгалагт уярч <br />Эрхэмсэг гоогийн чинь өмнө эр сэтгэл номхордог оо
-          <br />Энхрий ялдамын чинь дэргэд орчлонг огоорч жаргадаг аа<br />
-          <br />
-          Сарны гэгээнд гэзгээ задлаж дэр хуваасан <br />Сайхан хонгор бүсгүй л
-          хайрын минь эзэн <br />
-          Саруул талын цэцэгнээс ялгаатай нь зүрхэнд дэлгэрдэг <br />Сарнай
-          анхил бүсгүй чи заяа чимсэн эгэлхэнгоо <br />
-          <br />
+          Бүгээн хорвоог чимсэн бүсгүй хээнцэр цэцэг Бүлээн сүүгээр эгшиглсэн
+          бурхан эгэл заяа Эр тавиланг уяраасан өр зөөлөн үзэсгэлэн Эрхэмсэг
+          бүсгүй та ертөнцийн нэгэн гайхамшиг
+          <br /><br />
+          Бүсгүй биеэс унасан болохоор Бүсгүй биетэй учирсан болохоор Бүсгүй үр
+          тарисан болохоор Бүсгүй тэнгэрт сүсэлдэг эр хүн би
+          <br /><br />
+          Дайны дунд ч гал шиг ассан зоригт хатадын улбаатай Дууны сайханд ч
+          мөнхөд эгшиглэх уянга яруу ухаантай Дуулим хорвоог бүхэлд нь уяраах
+          хөг аялгуу бүүвэйтэй Дэлхий ертөнцийг гийгүүлсэн уран яруухан
+          үзэсгэлэнгоо
+          <br /><br />
+          Эгэл эгэлхэн хорвоог хайраар чимдэг гайхамшиг Эргэх цагийн хүрдэнд
+          удам хэлхсэн танхил гэргий Энхэр энхэрхэн аалиараа амьдрал хуурайлсан
+          ижий Эцэс төгсгөлгүй хөврөх он жилийг бүтээгч бурхан юм
+          <br /><br />
+          Танхил уяхан биеийн чинь уранд автаж Тормойх алаг нүдний чинь
+          тунгалагт уярч Эрхэмсэг гоогийн чинь өмнө эр сэтгэл номхордог оо
+          Энхрий ялдамын чинь дэргэд орчлонг огоорч жаргадаг аа
+          <br /><br />
+          Сарны гэгээнд гэзгээ задлаж дэр хуваасан Сайхан хонгор бүсгүй л хайрын
+          минь эзэн Саруул талын цэцэгнээс ялгаатай нь зүрхэнд дэлгэрдэг Сарнай
+          анхил бүсгүй чи заяа чимсэн эгэлхэнгоо
+          <br /><br />
+
           <strong>[Б.Лхагвасүрэн]</strong>
         </p>
       </div>
